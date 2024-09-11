@@ -1,5 +1,6 @@
-from pydantic import BaseModel, EmailStr, PositiveFloat, PositiveInt, validator, ValidationError
-from datetime import datetime, time
+from datetime import datetime
+from typing import Tuple
+from pydantic import BaseModel, EmailStr, PositiveFloat, PositiveInt
 from enum import Enum
 
 class ProdutoEnum(str, Enum):
@@ -19,23 +20,8 @@ class Vendas(BaseModel):
         quantidade (PositiveInt): quantidade de produtos
         produto (ProdutoEnum): categoria do produto
     """
-    email: EmailStr
+    email: EmailStr # kaio =! kaio@gmai.com
     data: datetime
     valor: PositiveFloat
     quantidade: PositiveInt
     produto: ProdutoEnum
-
-    @validator('data')
-    def validar_intervalo_data(cls, v):
-        # Define o intervalo de datas permitido
-        inicio_intervalo = datetime(2024, 9, 1)  # 01/09/2024
-        fim_intervalo = datetime(2024, 9, 12, 23, 59, 59)  # 12/09/2024 até 23:59:59
-
-        # Verifica se a data está dentro do intervalo permitido
-        if not (inicio_intervalo <= v <= fim_intervalo):
-            raise ValueError("A data da venda deve estar entre 01/09/2024 e 12/09/2024.")
-        return v
-
-    @validator('produto')
-    def categoria_deve_estar_no_enum(cls, v):
-        return v
