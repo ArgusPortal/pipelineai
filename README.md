@@ -1,11 +1,5 @@
 ### **README - Sistema de CRM e Vendas da ZapFlow**
 
-Esse é o repositório da primeira parte da aula
-
-[![Jornada de Dados - Luciano Galvão Filho](https://img.youtube.com/vi/I-4noY9hGTQ/0.jpg)](https://www.youtube.com/watch?v=I-4noY9hGTQ)
-
----
-
 ### **Introdução**
 
 O Sistema de CRM e Vendas da ZapFlow é uma aplicação desenvolvida para gerenciar e validar vendas de forma simples e eficiente. O sistema é composto por um frontend interativo desenvolvido com Streamlit, validação de dados com Pydantic, e integração com um banco de dados PostgreSQL usando Psycopg2.
