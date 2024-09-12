@@ -17,6 +17,9 @@ DB_SCHEMA= os.getenv("DB_SCHEMA")
 
 # Função para salvar os dados validados no PostgreSQL
 def salvar_no_postgres(dados: Vendas):
+    """
+    Função para salvar no postgres
+    """
     try:
         conn = psycopg2.connect(
             host=DB_HOST,
@@ -28,14 +31,15 @@ def salvar_no_postgres(dados: Vendas):
         
         # Inserção dos dados na tabela de vendas
         insert_query = sql.SQL(
-            "INSERT INTO vendas (email, data, valor, quantidade, produto) VALUES (%s, %s, %s, %s, %s)"
+            "INSERT INTO vendas (email, data, hora, valor, quantidade, produto) VALUES (%s, %s, %s, %s, %s, %s)"
         )
         cursor.execute(insert_query, (
             dados.email,
             dados.data,
+            dados.hora,
             dados.valor,
             dados.quantidade,
-            dados.produto.value
+            dados.produto.value  # Aqui assumimos que produto é um Enum e usamos seu valor
         ))
         conn.commit()
         cursor.close()

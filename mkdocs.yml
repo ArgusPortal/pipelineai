@@ -1,9 +1,9 @@
 site_name: My Docs
 
 theme:
-  name: 'material'
+  name: "material"
 
 plugins:
-    - search
-    - mkdocstrings:
+  - search
+  - mkdocstrings:
       default_handler: python

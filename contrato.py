@@ -1,5 +1,4 @@
-from datetime import datetime
-from typing import Tuple
+from datetime import datetime, time
 from pydantic import BaseModel, EmailStr, PositiveFloat, PositiveInt
 from enum import Enum
 
@@ -20,8 +19,12 @@ class Vendas(BaseModel):
         quantidade (PositiveInt): quantidade de produtos
         produto (ProdutoEnum): categoria do produto
     """
+
     email: EmailStr # kaio =! kaio@gmai.com
     data: datetime
+    hora: time
     valor: PositiveFloat
     quantidade: PositiveInt
     produto: ProdutoEnum
+
+    
